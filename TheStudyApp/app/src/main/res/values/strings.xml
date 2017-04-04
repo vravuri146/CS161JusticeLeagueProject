@@ -1,0 +1,32 @@
+<resources>
+    <string name="app_name">TheStudyApp</string>
+
+    <!-- Strings related to login -->
+    <string name="hint_email">Email</string>
+    <string name="hint_password">Password (optional)</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="sign_in">Sign In</string>
+    <string name="sign_out">Sign Out</string>
+    <string name="signed_out">Signed Out</string>
+    <string name="create_account">Create Account</string>
+    <string name="emailpassword_title_text">Sign in/Out</string>
+
+    <string name="verify_email">Verify Email</string>
+    <string name="error_invalid_password">This password is too short</string>
+    <string name="error_incorrect_password">This password is incorrect</string>
+    <string name="error_field_required">This field is required</string>
+    <string name="permission_rationale">"Contacts permissions are needed for providing email
+        completions."
+    </string>
+    <string name="title_activity_home_page">HomePageActivity</string>
+    <string name="users_class">Foo`s Subjects</string>
+    <string name="view_subject">View Subject</string>
+    <string name="delete_subject">Delete Subject</string>
+    <string name="add_subject">Add New Subject</string>
+    <string name="title_activity_base">BaseActivity</string>
+    <string name="title_activity_course_list">CourseListActivity</string>
+
+    <!--CourseListActivity-->
+
+    <string name="add_course">Add Course</string>
+</resources>

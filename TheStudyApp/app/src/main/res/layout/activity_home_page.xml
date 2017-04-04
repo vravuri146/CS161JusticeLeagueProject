@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/content_home_page"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.thestudyapp.HomePageActivity"
+    >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/mainContainerLL"
+        android:background="@color/colorConcrete"
+        android:orientation="vertical">
+
+        <!-- App Title View -->
+        <TextView
+            android:background="@color/colorPrimary"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:padding="10dp"
+            android:text="@string/app_name"
+            android:textAlignment="center"
+            android:textColor="@color/colorFont"
+            android:textSize="35sp"/>
+
+        <!-- Users name -->
+        <TextView
+            android:background="@color/colorWhite"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_marginTop="-10dp"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="40dp"
+            android:layout_marginBottom="40dp"
+            android:id="@+id/users_name"
+            android:text="@string/users_class"
+            android:textAlignment="center"
+            android:textColor="@color/colorPrimary"
+            android:textSize="20sp"/>
+
+        <!-- Users subjects -->
+        <ListView
+            android:background="@drawable/list_view_border"
+            android:divider="@color/colorPrimary"
+            android:dividerHeight="2dp"
+            android:id="@+id/usersSubjectsLV"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp">
+        </ListView>
+
+        <!-- Users subjects -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:orientation="horizontal"
+            android:weightSum="2">
+
+            <!-- View Subject -->
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@color/colorPrimary"
+                android:textColor="@color/colorFont"
+                android:text="@string/view_subject"/>
+
+            <!-- Delete Subject -->
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@color/colorPrimary"
+                android:textColor="@color/colorFont"
+                android:onClick="deleteCourse"
+                android:text="@string/delete_subject"/>
+        </LinearLayout>
+
+        <!-- Add New Subject -->
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimary"
+            android:textColor="@color/colorFont"
+            android:text="@string/add_subject"
+            android:layout_gravity="center"
+            android:padding="5dp"
+            android:layout_marginTop="20dp"
+            android:onClick="addCourse"/>
+
+    </LinearLayout>
+
+</RelativeLayout>
