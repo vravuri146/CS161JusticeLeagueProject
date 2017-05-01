@@ -49,7 +49,7 @@ public class GoogleSignInActivity extends BaseActivity implements
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_google);
+        setContentView(R.layout.activity_login);
 
         // Views
         mStatusTextView = (TextView) findViewById(R.id.status);

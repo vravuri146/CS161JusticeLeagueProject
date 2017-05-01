@@ -18,6 +18,11 @@
     <string name="permission_rationale">"Contacts permissions are needed for providing email
         completions."
     </string>
+    <string name="auth_failed"> Authetication Failed </string>
+    <string name="err_msg_password" > Password Failed</string>
+    <string name="err_msg_required"> Password Required</string>
+    <string name="err_msg_email"> Enter Valid Email</string>
+
     <string name="title_activity_home_page">HomePageActivity</string>
     <string name="users_class">Foo`s Subjects</string>
     <string name="view_subject">View Subject</string>
