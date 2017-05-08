@@ -13,6 +13,7 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.firebase.client.Firebase;
@@ -30,6 +31,7 @@ public class LoginActivity extends AppCompatActivity{
     private ProgressBar progressBar;
     private EditText existingEmail, existingPassword;
     private TextInputLayout loginInputEmail, loginInputPassword;
+    private TextView newusertxt;
     private FirebaseAuth auth;
 
     @Override
@@ -38,16 +40,16 @@ public class LoginActivity extends AppCompatActivity{
         setContentView(R.layout.activity_login);
         auth =FirebaseAuth.getInstance();
 
-        loginInputEmail = (TextInputLayout) findViewById(R.id.login_input_layout_email);
-        loginInputPassword = (TextInputLayout) findViewById(R.id.login_input_layout_password);
-        progressBar =(ProgressBar)findViewById(R.id.progressBar2);
+        loginInputEmail = (TextInputLayout) findViewById(R.id.input_email_layout);
+        loginInputPassword = (TextInputLayout) findViewById(R.id.input_password_layout);
+        progressBar =(ProgressBar)findViewById(R.id.progressBar);
 
-        existingEmail = (EditText)findViewById(R.id.exisitng_email);
-        existingPassword = (EditText)findViewById(R.id.exisitng_password);
+        existingEmail = (EditText)findViewById(R.id.email);
+        existingPassword = (EditText)findViewById(R.id.password);
 
-        loginbtn = (Button) findViewById(R.id.login_button);
-        newuserbtn = (Button) findViewById(R.id.newuser_button);
-        googlelogin = (Button) findViewById(R.id.sign_in_button);
+        loginbtn = (Button) findViewById(R.id.btn_login);
+        newusertxt = (TextView) findViewById(R.id.link_signup);
+        googlelogin = (Button) findViewById(R.id.btn_google);
 
         loginbtn.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -56,12 +58,12 @@ public class LoginActivity extends AppCompatActivity{
 
             }
         });
-        newuserbtn.setOnClickListener(new View.OnClickListener() {
+        newusertxt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(LoginActivity.this, newUserActivity.class);
                 startActivity(intent);
-                //finish();
+                finish();
 
 
             }
@@ -80,8 +82,8 @@ public class LoginActivity extends AppCompatActivity{
 
     }
 
-        // validate the form
-        public void submitForm() { String email = existingEmail.getText().toString().trim();
+    // validate the form
+    public void submitForm() { String email = existingEmail.getText().toString().trim();
         String password = existingPassword.getText().toString().trim();
 
         if(!checkEmail()) {
@@ -116,7 +118,7 @@ public class LoginActivity extends AppCompatActivity{
                 });
 
 
-        }
+    }
 
     private boolean checkEmail() {
         String email = existingEmail.getText().toString().trim();
@@ -170,3 +172,253 @@ public class LoginActivity extends AppCompatActivity{
 
 }
 
+
+
+
+
+
+
+
+
+//package com.thestudyapp;
+//
+//import android.app.ProgressDialog;
+//import android.os.Bundle;
+//import android.support.annotation.NonNull;
+//import android.support.design.widget.TextInputLayout;
+//import android.support.v7.app.AppCompatActivity;
+//import android.text.TextUtils;
+//import android.util.Log;
+//
+//import android.content.Intent;
+//import android.view.View;
+//import android.view.WindowManager;
+//import android.widget.Button;
+//import android.widget.EditText;
+//import android.widget.ProgressBar;
+//import android.widget.TextView;
+//import android.widget.Toast;
+//
+//import com.firebase.client.Firebase;
+//import com.google.android.gms.common.api.GoogleApiActivity;
+//import com.google.android.gms.tasks.OnCompleteListener;
+//import com.google.android.gms.tasks.Task;
+//import com.google.firebase.auth.AuthResult;
+//import com.google.firebase.auth.FirebaseAuth;
+//import com.google.firebase.auth.FirebaseUser;
+//
+//import butterknife.ButterKnife;
+//
+//import static com.thestudyapp.R.id.progressBar;
+//
+//public class LoginActivity extends AppCompatActivity {
+//    private static final String TAG = "LoginActivity";
+//   // private static final int REQUEST_SIGNUP = 0;
+//
+//    private Button _loginButton,_googleButton;
+//    private TextView _signupLink;
+//    private EditText _emailText, _passwordText;
+//    private ProgressBar _progressbar;
+//    private TextInputLayout _emailTextLayout, _passTextLayout;
+//    // Firebase Objects
+//    private FirebaseAuth auth;
+//    private FirebaseAuth.AuthStateListener mAuthListener;
+//    private String mCustomToken;
+//
+//
+//
+//
+//    @Override
+//    public void onCreate(Bundle savedInstanceState) {
+//        super.onCreate(savedInstanceState);
+//        setContentView(R.layout.activity_login);
+//        ButterKnife.bind(this);
+//        auth = FirebaseAuth.getInstance();
+//
+//
+//        // Buttons
+//        _loginButton = (Button) this.findViewById(R.id.btn_login);
+//        _googleButton = (Button) this.findViewById(R.id.btn_google);
+//        //Views
+//        _signupLink = (TextView) this.findViewById(R.id.link_signup);
+//        //Texts
+//        _emailText = (EditText) this.findViewById(R.id.email);
+//        _passwordText = (EditText) this.findViewById(R.id.password);
+//        _emailTextLayout = (TextInputLayout) this.findViewById(R.id.input_email_layout);
+//        _passTextLayout = (TextInputLayout) this.findViewById(R.id.input_password_layout);
+//        //Progress Bar
+//        _progressbar = (ProgressBar) this.findViewById(progressBar);
+//
+//
+//
+//        //get current user
+//       // FirebaseUser user = firebaseAuth.getCurrentUser();
+//
+//        //FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+//
+//
+//        mAuthListener = new FirebaseAuth.AuthStateListener() {
+//            @Override
+//            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+//                FirebaseUser user = firebaseAuth.getCurrentUser();
+//                if (user == null) {
+//                    // user auth state is changed - user is null
+//                    // launch login activity
+//                    startActivity(new Intent(LoginActivity.this, HomePageActivity.class));
+//                    finish();
+//                }
+//            }
+//        };
+//
+//
+//
+//        _loginButton.setOnClickListener(new View.OnClickListener() {
+//
+//            @Override
+//            public void onClick(View view) {
+//                login();
+//            }
+//        });
+//
+//        _signupLink.setOnClickListener(new View.OnClickListener() {
+//
+//            @Override
+//            public void onClick(View view) {
+//                Intent intent = new Intent(LoginActivity.this, newUserActivity.class);
+//                startActivity(intent);
+//
+//            }
+//        });
+//
+//
+//        _googleButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent intent = new Intent(LoginActivity.this, GoogleApiActivity.class);
+//                startActivity(intent);
+//
+//            }
+//
+//        });
+//    }
+//
+//    @Override
+//    public void onStart() {
+//        super.onStart();
+//        auth.addAuthStateListener(mAuthListener);
+//        FirebaseUser currentUser = auth.getCurrentUser();
+//        updateUI(currentUser);
+//    }
+//
+//    private void updateUI(FirebaseUser user) {
+//        if (user != null) {
+//            ((TextView) findViewById(R.id.link_signup)).setText(
+//                    "User ID: " + user.getUid());
+//        } else {
+//            ((TextView) findViewById(R.id.link_signup)).setText(
+//                    "Error: sign in failed.");
+//        }
+//    }
+//
+//    @Override
+//    public void onStop() {
+//        super.onStop();
+//        if (mAuthListener != null) {
+//            auth.removeAuthStateListener(mAuthListener);
+//        }
+//    }
+//
+//    @Override
+//    public void onResume() {
+//        super.onResume();
+//        _progressbar.setVisibility(View.GONE);
+//    }
+//
+//
+//
+//    public void login() {
+//        String email = _emailText.getText().toString().trim();
+//        String password = _passwordText.getText().toString().trim();
+//
+//        //authenticate user
+//        auth.signInWithCustomToken(mCustomToken)
+//                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+//                    @Override
+//                    public void onComplete(@NonNull Task<AuthResult> task) {
+//                        if (task.isSuccessful()) {
+//                            // Sign in success, update UI with the signed-in user's information
+//                            Log.d(TAG, "signInWithCustomToken:success");
+//                            FirebaseUser user = auth.getCurrentUser();
+//                            updateUI(user);
+//                        } else {
+//                            // If sign in fails, display a message to the user.
+//                            Log.w(TAG, "signInWithCustomToken:failure", task.getException());
+//                            Toast.makeText(LoginActivity.this, "Authentication failed.",
+//                                    Toast.LENGTH_SHORT).show();
+//                            updateUI(null);
+//                        }
+//                    }
+//                });
+//    }
+//
+//
+//
+////    @Override
+////    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+////        if (requestCode == REQUEST_SIGNUP) {
+////            if (resultCode == RESULT_OK) {
+////
+////                // TODO: Implement successful signup logic here
+////                // By default we just finish the Activity and log them in automatically
+////                //authetenticate user
+////                String email = _emailText.getText().toString().trim();
+////                String password = _passwordText.getText().toString().trim();
+////                this.finish();
+////            }
+////        }
+////    }
+//
+//    @Override
+//    public void onBackPressed() {
+//        // Disable going back to the MainActivity
+//        moveTaskToBack(true);
+//    }
+//
+//    public void onLoginSuccess() {
+//        _loginButton.setEnabled(true);
+//        Toast.makeText(getBaseContext(), "Login success", Toast.LENGTH_LONG).show();
+//
+//        finish();
+//    }
+//
+//    public void onLoginFailed() {
+//        Toast.makeText(getBaseContext(), "Login failed", Toast.LENGTH_LONG).show();
+//
+//        _loginButton.setEnabled(true);
+//    }
+//
+//    public boolean validate() {
+//        boolean valid = true;
+//
+//        String email = _emailText.getText().toString();
+//        String password = _passwordText.getText().toString();
+//
+//        if (email.isEmpty() || !android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+//            _emailText.setError("enter a valid email address");
+//            valid = false;
+//        } else {
+//            _emailText.setError(null);
+//        }
+//
+//        if (password.isEmpty() || password.length() < 6 || password.length() > 20) {
+//            _passwordText.setError("please enter a valid password with at least  characters");
+//            valid = false;
+//        } else {
+//            _passwordText.setError(null);
+//        }
+//
+//        return valid;
+//    }
+//
+//
+//}

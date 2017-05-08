@@ -1,33 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/content_home_page"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.thestudyapp.BaseActivity">
-
-    <android.support.design.widget.AppBarLayout
+    tools:context="com.thestudyapp.BaseActivity"
+    >
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:theme="@style/AppTheme.NoActionBar">
+        android:layout_height="match_parent"
+        android:id="@+id/mainContainerLL"
+        android:background="@color/colorConcrete"
+        android:orientation="vertical">
 
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar"
+        <!-- App Title View -->
+        <TextView
+            android:background="@color/colorPrimary"
+            android:layout_height="wrap_content"
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"
-            app:popupTheme="@style/AppTheme.NoActionBar" />
+            android:padding="10dp"
+            android:text="@string/app_name"
+            android:textAlignment="center"
+            android:textColor="@color/colorFont"
+            android:textSize="35sp"/>
 
-    </android.support.design.widget.AppBarLayout>
+        <Spinner
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:id="@+id/subjectsSpinner"
+            ></Spinner>
+        <ListView
+            android:background="@drawable/list_view_border"
+            android:divider="@color/colorPrimary"
+            android:dividerHeight="2dp"
+            android:id="@+id/coursesLV"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp">
+        </ListView>
 
-    <include layout="@layout/content_base" />
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="30dp"
+            android:layout_gravity="center"
+            android:text="@string/add_course"
+            android:id="@+id/addCourseButton"
+            android:padding="20dp"
+            android:onClick="addSelectedCourse"
+            android:background="@color/colorPrimary"/>
 
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:layout_margin="@dimen/fab_margin"
-        app:srcCompat="@android:drawable/ic_dialog_email" />
+    </LinearLayout>
 
-</android.support.design.widget.CoordinatorLayout>
+</RelativeLayout>
